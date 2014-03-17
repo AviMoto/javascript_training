@@ -9,96 +9,89 @@ var Person= function(){
 	this.alpah = /[^a-zA-Z]/;
 	this.numericReg = /[^0-9]/;
 	this.birthdateReg= /[0-9]{2}[\/][0-9]{2}[\/][1-9]{1}[0-9]{3}/;
+};
+Person.prototype = {
+	get firstName(){
+		return firstName;
+	},
 	
-	this.getFirstName = function(){
-		return this.firstName;
-	}; 
-	
-	this.setFirstName = function(name){
+	set firstName(name){
 		if(!name.match(this.alpah)){
-			this.firstName = name;
+			firstName = name;
 		}
-	};
+	},
+
+	get lastName(){
+		return lastName;
+	},
 	
-	this.getGender = function(){
-		return this.gender;
-	};
-	
-	this.getLasrName = function(){
-		return this.lastName;
-	}; 
-	
-	this.setFirstName = function(name){
+	set lastName(name){
 		if(!name.match(this.alpah)){
-			this.lastName = name;
+			lastName = name;
 		}
-	};
+	},
 	
-	this.getGender = function(){
-		return this.gender;
-	};
+	get gender (){
+		return gender;
+	},
 	
-	this.setGender = function(str){
+	set gender(str){
 		if(str == "male" || str == "female"){
-			this.gender = str;
+			gender = str;
 		} else {
 			console.log("no such gender: " + str);
 		}
-	};
+	},
 	
-	this.getBirthdate = function(){
-		return this.birthdate;
-	};
+	get birthdate(){
+		return birthdate;
+	},
 	
-	this.setBirthdate = function(str){
+	set birthdate (str){
 		if(str.match(this.birthdateReg)){
-			this.birthdate = str;
+			birthdate = str;
 		}
-	};
+	},
 	
-	this.getWeight = function(){
-		return this.weight;
-	};
+	get weight(){
+		return weight;
+	},
 	
-	this.setWeight = function(str){
-		if(!str.match(this.numericReg)){
-			this.weight = str;
-		}
-	};
+	set weight(str){
+			weight = str;
+	},
 	
-	this.getHeight = function(){
-		return this.height;
-	};
+	get height(){
+		return height;
+	},
 	
-	this.setHeight = function(str){
-		if(!str.match(this.numericReg)){
-			this.height = str;
-		}
-	};
+	set height(str){
+			height = str;
+	},
 	
-	this.getCountry = function(){
-		return this.country;
-	};
+	get country (){
+		return country;
+	},
 	
-	this.setCountry = function(str){
+	set country (str){
 		if(!str.match(this.alpah)){
-			this.country = str;
+			country = str;
 		}
-	};
+	},
 	
-	this.fullName = function(){
+	fullName : function(){
 		return this.firstName + " " + this.lastName;
-	};
+	},
 	
-	this.age = function(){
+	age : function(){
 		var today = new Date();
 		var myBirthdate = this.birthdate.split("/");
 		myBirthdate = new Date(myBirthdate[2],myBirthdate[1].valueOf()-1,myBirthdate[0]);
 		age = today.getTime() - myBirthdate.getTime();
 		return Math.round(age/(1000*60*60*24*365));
-	};
+	},
 };
 
 var Avi = new Person();
-Avi.setBirthdate("20/09/1982");
+Avi.birthdate ="20/09/1982";
 alert("My age is " + Avi.age());
