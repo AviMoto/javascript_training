@@ -93,6 +93,41 @@ var Person= (function(){
 });
 
 
-var Avi = Person();
+var Rider = (function(){
+	this.id = 1;
+	this.team = "";
+	this.motorcycle = "";
+	return Object.create(Person(),{
+		id:{set: function(num){
+				id = num;
+			},
+			get: function(){
+				return id;
+			}
+		},
+		team:{	set: function(name){
+					if(!name.match(this.alpah)){
+						team = name;
+					}
+				},
+				get: function(){
+						return team;
+				}
+		},
+		motorcycle:{set: function(name){
+							if(!name.match(this.alpah)){
+								motorcycle = name;
+							}
+						},
+						get: function(){
+							return motorcycle;
+						}
+		}
+	});
+});
+
+var Avi = Rider();
 Avi.birthdate ="20/09/1982";
-alert("My age is " + Avi.age());
+Avi.id = 13;
+alert("My age is " + Avi.age() + " and my Rider Number is " + Avi.id);
+
