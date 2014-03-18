@@ -1,4 +1,4 @@
-var Person= function(){
+var Person= (function(){
 	this.firstName = "";
 	this.lastName = "";
 	this.gender = "male";
@@ -9,9 +9,8 @@ var Person= function(){
 	this.alpah = /[^a-zA-Z]/;
 	this.numericReg = /[^0-9]/;
 	this.birthdateReg= /[0-9]{2}[\/][0-9]{2}[\/][1-9]{1}[0-9]{3}/;
-};
-Person.prototype = {
-	get firstName(){
+	
+	return {get firstName(){
 		return firstName;
 	},
 	
@@ -89,9 +88,11 @@ Person.prototype = {
 		myBirthdate = new Date(myBirthdate[2],myBirthdate[1].valueOf()-1,myBirthdate[0]);
 		age = today.getTime() - myBirthdate.getTime();
 		return Math.round(age/(1000*60*60*24*365));
-	},
-};
+	}
+	};
+});
 
-var Avi = new Person();
+
+var Avi = Person();
 Avi.birthdate ="20/09/1982";
 alert("My age is " + Avi.age());
